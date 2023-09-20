@@ -2,6 +2,7 @@
   "expo": {
     "name": "minwallet",
     "slug": "minwallet",
+    "scheme": "dev.eneskutlay.minwallet",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +26,15 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1bde779d-0af6-4e7e-b9b4-8b769d68d731"
+      }
+    },
+    "owner": "eneskutlay",
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
