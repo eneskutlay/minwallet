@@ -1,16 +1,24 @@
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, StyleSheet, View } from "react-native";
-import { Title, Subtitle, Paragraph } from "../src/components/Texts";
+import { Title, Paragraph, Hint } from "../src/components/Texts";
+import { TextField } from "../src/components/TextFields";
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
       <View style={styles.header}>
-        <Title>Welcome to Miniwallet</Title>
+        <Title>Welcome to Minwallet</Title>
       </View>
       <View style={styles.body}>
-        <Subtitle>Personal Information</Subtitle>
+        <View style={styles.infoParagraph}>
+          <Hint>
+            Before you start, please fill out your information completely.
+          </Hint>
+        </View>
+        <View style={styles.userData}>
+          <TextField label="Enter your name" placeholder="Your name" />
+        </View>
       </View>
       <View style={styles.footer}>
         <Paragraph>Footer</Paragraph>
@@ -23,20 +31,36 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+    justifyContent: "center",
   },
   header: {
-    width: "70%",
-    height: "130px",
+    width: "85%",
+    minHeight: "10%",
     alignItems: "center",
-    paddingVertical: 30,
+    paddingTop: 30,
   },
   body: {
-    width: "70%",
+    width: "85%",
     alignItems: "center",
-    height: "80%",
+    minHeight: "80%",
+  },
+  infoParagraph: {
+    marginTop: 20,
+    width: "100%",
+    alignItems: "center",
+
+    height: "auto",
+  },
+  userData: {
+    marginVertical: 20,
+    width: "100%",
+
+    alignItems: "center",
+    height: "auto",
   },
   footer: {
-    width: "70%",
-    minHeight: "64px",
-    alignItems: "center",  },
+    width: "85%",
+    minHeight: "10%",
+    alignItems: "center",
+  },
 });
