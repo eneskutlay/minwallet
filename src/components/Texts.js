@@ -8,10 +8,11 @@ const Paragraph = ({ children }) => (
   <Text style={styles.paragraph}>{children}</Text>
 );
 
-const Hint = ({ children }) => <Text style={styles.hint}>{children}</Text>;
-
 const styles = StyleSheet.create({
   title: {
+    //if ios use 17px else use 20px
+
+    // if system ios use 17px else use 20px
     fontSize: Platform.OS === "ios" ? 22 : 26,
     fontWeight: "bold",
     marginBottom: 20,
@@ -24,21 +25,10 @@ const styles = StyleSheet.create({
     color: "#FDF2C5",
   },
   paragraph: {
-    fontSize: Platform.OS === "ios" ? 16 : 17,
+    fontSize: Platform.OS === "ios" ? 20 : 21,
     marginBottom: 20,
     color: "#E7E7E7",
   },
-  hint: {
-    overflow: "hidden",
-    fontSize: Platform.OS === "ios" ? 14 : 15,
-    width: "100%",
-    backgroundColor: "#303030",
-    color: "#FFFFFF",
-    opacity: 0.6,
-    padding: 10,
-    borderRadius: 9.63,
-    marginBottom: 20,
-  },
 });
 
-export { Title, Subtitle, Paragraph, Hint };
+export { Title, Subtitle, Paragraph };

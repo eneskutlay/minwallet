@@ -10,17 +10,17 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#1C1C1E"
+      "backgroundColor": "#323336"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "backgroundColor": "#1C1C1E"
+      "backgroundColor": "#323336"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#1C1C1E"
+        "backgroundColor": "#323336"
       }
     },
     "web": {
