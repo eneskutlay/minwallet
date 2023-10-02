@@ -1,13 +1,14 @@
+//import React, { useState } from "react";
 import { StyleSheet, TextInput, Platform, Keyboard } from "react-native";
+//import { SelectList } from "react-native-dropdown-select-list";
 
-const TextField = ({ placeholder, value, onChangeText, secureTextEntry }) => (
+const PrimaryInput = ({ placeholder, value, onChangeText }) => (
   <TextInput
-    style={styles.textfield}
+    style={styles.PrimaryInput}
     placeholder={placeholder}
     placeholderTextColor="#E7E7E7"
     value={value}
     onChangeText={onChangeText}
-    secureTextEntry={secureTextEntry}
     keyboardType={Platform.OS === "ios" ? "number-pad" : "numeric"}
     returnKeyType="done"
     onSubmitEditing={Keyboard.dismiss}
@@ -16,7 +17,7 @@ const TextField = ({ placeholder, value, onChangeText, secureTextEntry }) => (
 );
 
 const styles = StyleSheet.create({
-  textfield: {
+  PrimaryInput: {
     width: "100%",
     height: 40,
     borderColor: "#545454",
@@ -31,4 +32,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { TextField };
+export { PrimaryInput };

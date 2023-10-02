@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
   hint: {
     overflow: "hidden",
     fontSize: Platform.OS === "ios" ? 14 : 15,
-    width: "100%",
     backgroundColor: "#303030",
     color: "#FFFFFF",
     opacity: 0.6,
