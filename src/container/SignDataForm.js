@@ -5,10 +5,15 @@ import {
   KeyboardAvoidingView,
   ScrollView,
 } from "react-native";
-import { PrimaryInput } from "../components/TextFields";
+import { PrimaryInput, DropDownDefault } from "../components/TextFields";
 import { PrimaryButton } from "../components/Buttons";
+import { useRouter } from "expo-router";
 
 export default function SignDataForm() {
+  const router = useRouter();
+  const pressHandler = (path) => {
+    router.push(path);
+  };
   return (
     <View style={styles.container}>
       <KeyboardAvoidingView
@@ -18,14 +23,14 @@ export default function SignDataForm() {
       >
         <ScrollView style={styles.formView}>
           <PrimaryInput placeholder="Name" />
-          <PrimaryInput placeholder="Language" />
-          <PrimaryInput placeholder="Currency" />
+          <DropDownDefault title="Language" optionOne="EN" optionTwo="TR"/>
+          <PrimaryInput placeholder="Currency" value={{ }} />
           <PrimaryInput placeholder="Monthly income" />
           <PrimaryInput placeholder="Monthly expense" />
         </ScrollView>
       </KeyboardAvoidingView>
       <View style={styles.button}>
-        <PrimaryButton />
+        <PrimaryButton title="Go" onPress={() => pressHandler("/home")} />
       </View>
     </View>
   );
@@ -64,5 +69,3 @@ const styles = StyleSheet.create({
     backgroundColor: "#545454",
   },
 });
-
-export { SignDataForm };
