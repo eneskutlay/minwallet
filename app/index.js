@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, StyleSheet, View } from "react-native";
 import { Title, Hint } from "../src/components/Texts";
-import { SignDataForm } from "../src/container/SignDataForm";
+import SignDataForm from "../src/container/SignDataForm";
 
 export default function App() {
   return (
@@ -45,7 +45,8 @@ const styles = StyleSheet.create({
   userData: {
     width: "100%",
     alignItems: "center",
-    height: "auto",
+    //height: "auto",
+    height: "100%",
     padding: 20,
   },
   footer: {
