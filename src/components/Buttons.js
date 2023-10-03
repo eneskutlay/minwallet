@@ -1,10 +1,10 @@
 import { StyleSheet } from "react-native";
 import { Button, View } from "react-native";
 
-export default function PrimaryButton() {
+export default function PrimaryButton({title, onPress}) {
   return (
     <View style={styles.container}>
-      <Button title="Next" />
+      <Button title={title} onPress={onPress} />
     </View>
   );
 }
