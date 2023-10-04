@@ -1,7 +1,7 @@
-import { StyleSheet } from "react-native";
-import { Button, View } from "react-native";
+import React from "react";
+import { StyleSheet, View, Button } from "react-native";
 
-export default function PrimaryButton({title, onPress}) {
+export default function PrimaryButton({ title, onPress }) {
   return (
     <View style={styles.container}>
       <Button title={title} onPress={onPress} />
@@ -9,17 +9,12 @@ export default function PrimaryButton({title, onPress}) {
   );
 }
 
+
+
 const styles = StyleSheet.create({
   container: {
     width: "100%",
     alignItems: "center",
     height: "auto",
   },
-  button: {
-    width: "100%",
-    alignItems: "center",
-    height: "auto",
-  },
 });
-
-export { PrimaryButton };

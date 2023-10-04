@@ -1,14 +1,21 @@
+import React from "react";
 import { StyleSheet, Text, Platform } from "react-native";
 
-const Title = ({ children }) => <Text style={styles.title}>{children}</Text>;
-const Subtitle = ({ children }) => (
-  <Text style={styles.subtitle}>{children}</Text>
-);
-const Paragraph = ({ children }) => (
-  <Text style={styles.paragraph}>{children}</Text>
-);
+export function Title({ children }) {
+  return <Text style={styles.title}>{children}</Text>;
+}
 
-const Hint = ({ children }) => <Text style={styles.hint}>{children}</Text>;
+export function Subtitle({ children }) {
+  return <Text style={styles.subtitle}>{children}</Text>;
+}
+
+export function Paragraph({ children }) {
+  return <Text style={styles.paragraph}>{children}</Text>;
+}
+
+export function Hint({ children }) {
+  return <Text style={styles.hint}>{children}</Text>;
+}
 
 const styles = StyleSheet.create({
   title: {
@@ -39,5 +46,3 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 });
-
-export { Title, Subtitle, Paragraph, Hint };
