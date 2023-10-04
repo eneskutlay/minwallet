@@ -1,7 +1,14 @@
 import React from "react";
-import { StatusBar, SafeAreaView, StyleSheet, View } from "react-native";
+import {
+  StatusBar,
+  SafeAreaView,
+  StyleSheet,
+  View,
+  Button,
+} from "react-native";
 import { Title, Hint } from "../src/components/Texts";
 import Onboarding from "../src/container/Onboarding";
+import { getAllData, clearAllData } from "../src/lib/storage";
 
 export default function App() {
   return (
@@ -16,7 +23,8 @@ export default function App() {
         </View>
       </View>
       <View style={styles.footer}>
-        <Hint>Powered by Minwallet</Hint>
+        <Button title="Tüm verileri al" onPress={getAllData} />
+        <Button title="Tüm verileri sil" onPress={clearAllData} />
       </View>
     </SafeAreaView>
   );

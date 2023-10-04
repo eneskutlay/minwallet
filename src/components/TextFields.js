@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, TextInput, Platform, Keyboard } from "react-native";
+import { saveData } from "../lib/storage";
 
 export function PrimaryInput({ placeholder, value, onChangeText }) {
   return (
@@ -16,17 +17,28 @@ export function PrimaryInput({ placeholder, value, onChangeText }) {
   );
 }
 
-export function SignInInput({ placeholder, value, onChangeText }) {
+export function OnboardingInput({ placeholder, value, onChangeText }) {
+  const [text, setText] = useState(""); // Kullanıcının girdiği veriyi saklamak için state
+
+  const handleTextChange = (newText) => {
+    setText(newText);
+  };
+
+  const handleInputBlur = () => {
+    // Kullanıcı veriyi girdikten sonra burada saklayabilirsiniz
+    saveData(placeholder, text);
+    Keyboard.dismiss();
+  };
   return (
     <TextInput
       style={styles.input}
       placeholder={placeholder}
       placeholderTextColor="#E7E7E7"
-      value={value}
-      onChangeText={onChangeText}
+      value={text}
+      onChangeText={handleTextChange}
+      onBlur={handleInputBlur}
       keyboardType={Platform.OS === "ios" ? "number-pad" : "numeric"}
       returnKeyType="done"
-      onSubmitEditing={Keyboard.dismiss}
     />
   );
 }
