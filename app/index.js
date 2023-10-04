@@ -1,7 +1,7 @@
-import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, StyleSheet, View } from "react-native";
+import React from "react";
+import { StatusBar, SafeAreaView, StyleSheet, View } from "react-native";
 import { Title, Hint } from "../src/components/Texts";
-import SignDataForm from "../src/container/SignDataForm";
+import Onboarding from "../src/container/Onboarding";
 
 export default function App() {
   return (
@@ -9,14 +9,15 @@ export default function App() {
       <StatusBar style="auto" />
       <View style={styles.header}>
         <Title>Welcome to Minwallet</Title>
-        <Hint>Fill completely for best performance</Hint>
       </View>
       <View style={styles.body}>
         <View style={styles.userData}>
-          <SignDataForm />
+          <Onboarding />
         </View>
       </View>
-      <View style={styles.footer}></View>
+      <View style={styles.footer}>
+        <Hint>Powered by Minwallet</Hint>
+      </View>
     </SafeAreaView>
   );
 }
@@ -33,8 +34,7 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     height: "auto",
-    padding: 16,
-    zIndex: 1,
+    padding: 20,
   },
   body: {
     flex: 5,
@@ -45,14 +45,14 @@ const styles = StyleSheet.create({
   userData: {
     width: "100%",
     alignItems: "center",
-    //height: "auto",
-    height: "100%",
-    padding: 20,
+    height: "auto",
   },
   footer: {
-    flex: 1,
+    flex: 2,
     width: "100%",
-    alignItems: "center",
+    justifyContent: "flex-end",
+    //alignItems: "center",
     height: "auto",
+    padding: 14,
   },
 });
