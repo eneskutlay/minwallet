@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  StatusBar,
-  SafeAreaView,
-  StyleSheet,
-  View,
-  Button,
-} from "react-native";
+import { StatusBar, SafeAreaView, StyleSheet, View, Button } from "react-native";
 import { Title, Hint } from "../src/components/Texts";
 import Onboarding from "../src/container/Onboarding";
 import { getAllData, clearAllData } from "../src/lib/storage";
@@ -57,9 +51,10 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 2,
+    flexDirection: "row",
     width: "100%",
-    justifyContent: "flex-end",
-    //alignItems: "center",
+    justifyContent: "space-evenly",
+    alignItems: "center",
     height: "auto",
     padding: 14,
   },

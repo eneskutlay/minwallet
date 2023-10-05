@@ -2,14 +2,14 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // Veriyi AsyncStorage'e kaydetmek için işlev
 export const saveData = async (key, data) => {
+  //console.log("Key:", key, "Data:", data); // Ekle
   try {
     await AsyncStorage.setItem(key, data);
-    console.log(`${key} verisi başarıyla kaydedildi.`, data);
+    //console.log(`${key} verisi başarıyla kaydedildi.`, data);
   } catch (error) {
-    console.error(`${key} verisi kaydedilirken bir hata oluştu:`, error);
+    //console.error(`${key} verisi kaydedilirken bir hata oluştu:`, error);
   }
 };
-
 // Veriyi AsyncStorage'den almak için işlev
 export const getData = async (key) => {
   try {
