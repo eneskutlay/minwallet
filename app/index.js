@@ -8,7 +8,7 @@ import { getAllData, clearAllData } from "../src/lib/storage";
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar style="auto" />
+      <StatusBar style="auto" backgroundColor="#1C1C1E" />
       <View style={styles.header}>
         <Title>Welcome to Minwallet</Title>
       </View>
@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     height: "100%",
+    backgroundColor: "#1C1C1E",
   },
   header: {
     width: "100%",
