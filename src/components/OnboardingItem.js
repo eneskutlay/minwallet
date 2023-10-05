@@ -1,16 +1,20 @@
 import React from "react";
-import { View, Text, StyleSheet, useWindowDimensions } from "react-native";
+import { View, StyleSheet, useWindowDimensions } from "react-native";
 import { OnboardingInput } from "./TextFields";
 import { Title } from "./Texts";
 
-export default function OnboardingItem({ item }) {
+export default function OnboardingItem({ item, onSubmitEditing }) {
   const { width } = useWindowDimensions();
 
   return (
     <View style={[styles.container, { width }]}>
       <View style={styles.content}>
         <Title>{item.title}</Title>
-        <OnboardingInput placeholder={item.placeholder} />
+        <OnboardingInput
+          placeholder={item.placeholder}
+          keyboardType={item.keyboardType}
+          onSubmitEditing={onSubmitEditing}
+        />
       </View>
     </View>
   );

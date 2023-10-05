@@ -17,7 +17,7 @@ export function PrimaryInput({ placeholder, value, onChangeText }) {
   );
 }
 
-export function OnboardingInput({ placeholder, value, onChangeText }) {
+export function OnboardingInput({ placeholder, keyboardType, onSubmitEditing }) {
   const [text, setText] = useState(""); // Kullanıcının girdiği veriyi saklamak için state
 
   const handleTextChange = (newText) => {
@@ -37,8 +37,9 @@ export function OnboardingInput({ placeholder, value, onChangeText }) {
       value={text}
       onChangeText={handleTextChange}
       onBlur={handleInputBlur}
-      keyboardType={Platform.OS === "ios" ? "number-pad" : "numeric"}
+      keyboardType={keyboardType || "default"}
       returnKeyType="done"
+      onSubmitEditing={onSubmitEditing}
     />
   );
 }
