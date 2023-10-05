@@ -53,7 +53,7 @@ export function OnboardingInput({
       onChangeText={handleTextChange}
       onBlur={handleInputBlur}
       keyboardType={keyboardType || "default"}
-      returnKeyType="done"
+      returnKeyType={Platform.OS === "ios" ? "done" : "next"}
       onSubmitEditing={handleOnSubmitEditing}
     />
   );
