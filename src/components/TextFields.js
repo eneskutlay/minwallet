@@ -35,6 +35,15 @@ export function OnboardingInput({
     saveData(placeholder, text);
     Keyboard.dismiss();
   };
+
+  const handleOnSubmitEditing = () => {
+    if (text.length > 0) {
+      onSubmitEditing();
+    } else {
+      Alert.alert("Lütfen bir değer giriniz.");
+    }
+  };
+
   return (
     <TextInput
       style={styles.input}
@@ -45,15 +54,10 @@ export function OnboardingInput({
       onBlur={handleInputBlur}
       keyboardType={keyboardType || "default"}
       returnKeyType="done"
-      onSubmitEditing={() =>
-        text.length > 0
-          ? onSubmitEditing()
-          : Alert.alert("Lütfen bir değer giriniz.")
-      }
+      onSubmitEditing={handleOnSubmitEditing}
     />
   );
 }
-
 const styles = StyleSheet.create({
   input: {
     width: "100%",

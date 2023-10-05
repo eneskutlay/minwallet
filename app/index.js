@@ -1,6 +1,7 @@
 import React from "react";
-import { StatusBar, SafeAreaView, StyleSheet, View, Button } from "react-native";
-import { Title, Hint } from "../src/components/Texts";
+import { StatusBar, SafeAreaView, StyleSheet, View } from "react-native";
+import { Title } from "../src/components/Texts";
+import PrimaryButton from "../src/components/Buttons";
 import Onboarding from "../src/container/Onboarding";
 import { getAllData, clearAllData } from "../src/lib/storage";
 
@@ -17,8 +18,8 @@ export default function App() {
         </View>
       </View>
       <View style={styles.footer}>
-        <Button title="Tüm verileri al" onPress={getAllData} />
-        <Button title="Tüm verileri sil" onPress={clearAllData} />
+        <PrimaryButton title="Tüm verileri al" onPress={getAllData} />
+        <PrimaryButton title="Tüm verileri sil" onPress={clearAllData} />
       </View>
     </SafeAreaView>
   );

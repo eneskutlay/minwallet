@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Animated } from "react-native";
 
-export function useOnboardingLogic(formData, saveData) {
+export function useOnboardingLogic(formData) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const flatListRef = useRef(null);
-
-  const inputRefs = formData.map(() => React.createRef());
 
   const focusInput = (index) => {
     if (inputRefs[index] && inputRefs[index].current) {
@@ -19,13 +17,6 @@ export function useOnboardingLogic(formData, saveData) {
     if (nextIndex < formData.length) {
       flatListRef.current.scrollToIndex({ index: nextIndex });
       setCurrentIndex(nextIndex);
-    }
-  };
-
-  const handleBack = () => {
-    if (currentIndex > 0) {
-      flatListRef.current.scrollToIndex({ index: currentIndex - 1 });
-      setCurrentIndex(currentIndex - 1);
     }
   };
 
@@ -48,6 +39,5 @@ export function useOnboardingLogic(formData, saveData) {
     scrollX,
     flatListRef,
     handleNext,
-    handleBack,
   };
 }

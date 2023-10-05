@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, FlatList, Animated } from "react-native";
+import { View, StyleSheet, FlatList, Animated } from "react-native";
 import OnboardingItem from "../components/OnboardingItem";
 import formData from "../lib/data/formData";
 import { useOnboardingLogic } from "../lib/logic/OnboardingLogic";
