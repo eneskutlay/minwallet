@@ -1,27 +1,26 @@
 export default [
   {
     id: 1,
-    text: "Select the Language",
-    placeholder: "Language",
+    title: "Enter your username",
+    placeholder: "Username",
+    keyboardType: "default", // Örnek bir klavye türü
   },
   {
     id: 2,
-    text: "Select the Currency",
-    placeholder: "Currency",
+    title: "Enter your monthly income",
+    placeholder: "Monthly Income",
+    keyboardType: "numeric", // Sayısal klavye
   },
   {
     id: 3,
-    text: "Fill the username field",
-    placeholder: "Username",
+    title: "Enter your monthly expenses",
+    placeholder: "Monthly Expenses",
+    keyboardType: "numeric", // Sayısal klavye
   },
   {
     id: 4,
-    text: "Fill monthly income field",
-    placeholder: "Monthly income",
-  },
-  {
-    id: 5,
-    text: "Fill monthly expense field",
-    placeholder: "Monthly expense",
+    title: "Enter your monthly savings goal",
+    placeholder: "Monthly Savings Goal",
+    keyboardType: "decimal-pad", // Ondalık klavye (virgül ile)
   },
 ];
