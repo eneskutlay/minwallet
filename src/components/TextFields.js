@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, TextInput, Platform, Keyboard } from "react-native";
+import { StyleSheet, TextInput, Platform, Keyboard, Alert } from "react-native";
 import { saveData } from "../lib/storage";
 
 export function PrimaryInput({ placeholder, value, onChangeText }) {
@@ -17,15 +17,21 @@ export function PrimaryInput({ placeholder, value, onChangeText }) {
   );
 }
 
-export function OnboardingInput({ placeholder, keyboardType, onSubmitEditing }) {
-  const [text, setText] = useState(""); // Kullanıcının girdiği veriyi saklamak için state
+export function OnboardingInput({
+  placeholder,
+  keyboardType,
+  onSubmitEditing,
+}) {
+  const [text, setText] = useState("");
 
   const handleTextChange = (newText) => {
+    if (keyboardType === "numeric") {
+      newText = newText.replace(/[^0-9]/g, "");
+    }
     setText(newText);
   };
 
   const handleInputBlur = () => {
-    // Kullanıcı veriyi girdikten sonra burada saklayabilirsiniz
     saveData(placeholder, text);
     Keyboard.dismiss();
   };
@@ -39,7 +45,11 @@ export function OnboardingInput({ placeholder, keyboardType, onSubmitEditing }) 
       onBlur={handleInputBlur}
       keyboardType={keyboardType || "default"}
       returnKeyType="done"
-      onSubmitEditing={onSubmitEditing}
+      onSubmitEditing={() =>
+        text.length > 0
+          ? onSubmitEditing()
+          : Alert.alert("Lütfen bir değer giriniz.")
+      }
     />
   );
 }

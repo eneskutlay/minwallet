@@ -5,14 +5,7 @@ import formData from "../lib/data/formData";
 import { useOnboardingLogic } from "../lib/logic/OnboardingLogic";
 
 export default function Onboarding() {
-  const {
-    currentIndex,
-    scrollX,
-    flatListRef,
-    handleNext,
-    handleBack,
-    handleInputSubmit,
-  } = useOnboardingLogic(formData);
+  const { scrollX, flatListRef, handleNext } = useOnboardingLogic(formData);
 
   return (
     <View style={styles.container}>
@@ -24,7 +17,7 @@ export default function Onboarding() {
             item={item}
             index={index}
             totalItems={formData.length}
-            onSubmitEditing={() => handleNext()}
+            onSubmitEditing={handleNext}
           />
         )}
         horizontal

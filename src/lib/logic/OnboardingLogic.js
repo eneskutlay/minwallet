@@ -15,9 +15,10 @@ export function useOnboardingLogic(formData, saveData) {
   };
 
   const handleNext = () => {
-    if (currentIndex < formData.length - 1) {
-      flatListRef.current.scrollToIndex({ index: currentIndex + 1 });
-      setCurrentIndex(currentIndex + 1);
+    const nextIndex = currentIndex + 1;
+    if (nextIndex < formData.length) {
+      flatListRef.current.scrollToIndex({ index: nextIndex });
+      setCurrentIndex(nextIndex);
     }
   };
 
