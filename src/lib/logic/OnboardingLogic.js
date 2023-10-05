@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Animated } from "react-native";
+import { useRouter } from "expo-router";
 
 export function useOnboardingLogic(formData) {
+  const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const flatListRef = useRef(null);
@@ -17,6 +19,8 @@ export function useOnboardingLogic(formData) {
     if (nextIndex < formData.length) {
       flatListRef.current.scrollToIndex({ index: nextIndex });
       setCurrentIndex(nextIndex);
+    } else {
+      router.push("/home");
     }
   };
 
