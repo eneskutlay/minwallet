@@ -12,7 +12,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#1C1C1E"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "backgroundColor": "#1C1C1E"
@@ -33,6 +35,9 @@
       }
     },
     "owner": "eneskutlay",
-    "plugins": ["expo-router"]
+    "plugins": [
+      "expo-router",
+      "expo-localization"
+    ]
   }
 }
