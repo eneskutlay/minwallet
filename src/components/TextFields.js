@@ -21,40 +21,19 @@ export function OnboardingInput({
   placeholder,
   keyboardType,
   onSubmitEditing,
+  onChangeText,
+  text,
 }) {
-  const [text, setText] = useState("");
-
-  const handleTextChange = (newText) => {
-    if (keyboardType === "numeric") {
-      newText = newText.replace(/[^0-9]/g, "");
-    }
-    setText(newText);
-  };
-
-  const handleInputBlur = () => {
-    saveData(placeholder, text);
-    Keyboard.dismiss();
-  };
-
-  const handleOnSubmitEditing = () => {
-    if (text.length > 0) {
-      onSubmitEditing();
-    } else {
-      Alert.alert("Lütfen bir değer giriniz.");
-    }
-  };
-
   return (
     <TextInput
       style={styles.input}
       placeholder={placeholder}
       placeholderTextColor="#E7E7E7"
       value={text}
-      onChangeText={handleTextChange}
-      onBlur={handleInputBlur}
+      onChangeText={onChangeText}
       keyboardType={keyboardType || "default"}
       returnKeyType={Platform.OS === "ios" ? "done" : "next"}
-      onSubmitEditing={handleOnSubmitEditing}
+      onSubmitEditing={onSubmitEditing}
     />
   );
 }

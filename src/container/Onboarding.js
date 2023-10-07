@@ -3,10 +3,12 @@ import { View, StyleSheet, FlatList, Animated } from "react-native";
 import OnboardingItem from "../components/OnboardingItem";
 import formData from "../lib/data/formData";
 import { useOnboardingLogic } from "../lib/logic/OnboardingLogic";
+import { getLocales } from "expo-localization";
 
 export default function Onboarding() {
-  const { scrollX, flatListRef, handleNext } = useOnboardingLogic(formData);
-
+  const currentLocale = getLocales()[0].languageCode;
+  const { scrollX, flatListRef, handleTextChange, handleNext } =
+    useOnboardingLogic(formData);
   return (
     <View style={styles.container}>
       <FlatList
@@ -17,14 +19,17 @@ export default function Onboarding() {
             item={item}
             index={index}
             totalItems={formData.length}
+            onChangeText={handleTextChange}
             onSubmitEditing={handleNext}
+            currentLocale={currentLocale}
+            text={formData[index].text}
           />
         )}
         horizontal
         showsHorizontalScrollIndicator={false}
         pagingEnabled
         bounces={false}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { x: scrollX } } }],
           { useNativeDriver: false }
