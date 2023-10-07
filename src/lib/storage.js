@@ -15,10 +15,10 @@ export const getData = async (key) => {
   try {
     const value = await AsyncStorage.getItem(key);
     if (value !== null) {
-      console.log(`${key} verisi başarıyla alındı:`, value);
+      //(`${key} verisi başarıyla alındı:`, value);
       return value;
     } else {
-      console.log(`${key} verisi bulunamadı.`);
+      //console.log(`${key} verisi bulunamadı.`);
       return null;
     }
   } catch (error) {
@@ -31,7 +31,7 @@ export const getData = async (key) => {
 export const removeData = async (key) => {
   try {
     await AsyncStorage.removeItem(key);
-    console.log(`${key} verisi başarıyla silindi.`);
+    //console.log(`${key} verisi başarıyla silindi.`);
   } catch (error) {
     console.error(`${key} verisi silinirken bir hata oluştu:`, error);
   }
@@ -46,8 +46,7 @@ export const getAllData = async () => {
     data.forEach(([key, value]) => {
       allData[key] = value;
     });
-
-    console.log("Tüm veriler:", allData);
+    console.log("Tüm veriler başarıyla alındı:", allData);
   } catch (error) {
     console.error("Veriler alınırken bir hata oluştu:", error);
   }
