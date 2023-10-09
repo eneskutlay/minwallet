@@ -17,7 +17,8 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "backgroundColor": "#1C1C1E"
+      "backgroundColor": "#1C1C1E",
+      "bundleIdentifier": "com.eneskutlay.minwallet"
     },
     "android": {
       "adaptiveIcon": {
