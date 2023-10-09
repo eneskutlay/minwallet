@@ -23,7 +23,8 @@
     "react-native-screens": "~3.22.0",
     "react-native-svg": "13.9.0",
     "victory-native": "^36.6.11",
-    "expo-localization": "~14.3.0"
+    "expo-localization": "~14.3.0",
+    "expo-splash-screen": "~0.20.5"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
