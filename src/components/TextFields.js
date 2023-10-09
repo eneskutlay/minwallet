@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, TextInput, Platform, Keyboard, Alert } from "react-native";
-import { saveData } from "../lib/storage";
+import { StyleSheet, TextInput, Platform, Keyboard } from "react-native";
 
 export function PrimaryInput({ placeholder, value, onChangeText }) {
   return (
