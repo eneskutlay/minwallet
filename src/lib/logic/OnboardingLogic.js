@@ -11,7 +11,8 @@ export function useOnboardingLogic(formData) {
   const flatListRef = useRef(null);
   const inputRefs = formData.map(() => useRef(null));
   const [text, setText] = useState("");
-  const currentLocale = getLocales()[0].languageCode;
+  // key error problem fixed ? another solution???
+  const currentLocale = "en";
 
   const handleTextChange = (newText) => {
     setText(newText);
