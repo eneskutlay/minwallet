@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { Animated } from "react-native";
 import { useRouter } from "expo-router";
 import { saveData } from "../storage";
-import { getLocales } from "expo-localization";
 
 export function useOnboardingLogic(formData) {
   const router = useRouter();
@@ -11,8 +10,6 @@ export function useOnboardingLogic(formData) {
   const flatListRef = useRef(null);
   const inputRefs = formData.map(() => useRef(null));
   const [text, setText] = useState("");
-  // key error problem fixed ? another solution???
-  const currentLocale = "en";
 
   const handleTextChange = (newText) => {
     setText(newText);
@@ -26,7 +23,8 @@ export function useOnboardingLogic(formData) {
 
   const handleNext = () => {
     // save data and go to next screen
-    saveData(formData[currentIndex].placeholder[currentLocale], text);
+    saveData(formData[currentIndex].key, text);
+    console.log(formData[currentIndex].key);
     if (currentIndex < formData.length - 1) {
       setCurrentIndex(currentIndex + 1);
       focusInput(currentIndex + 1);
