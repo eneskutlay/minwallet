@@ -10,6 +10,7 @@ export default [
       tr: "Kullanıcı Adı",
     },
     keyboardType: "default",
+    key: "Username",
   },
   {
     id: 2,
@@ -22,6 +23,7 @@ export default [
       tr: "Aylık Gelir",
     },
     keyboardType: "numeric",
+    key: "MonthlyIncome",
   },
   {
     id: 3,
@@ -34,6 +36,7 @@ export default [
       tr: "Aylık Gider",
     },
     keyboardType: "numeric",
+    key: "MonthlyExpense",
   },
   {
     id: 4,
@@ -46,5 +49,6 @@ export default [
       tr: "Aylık Tasarruf Hedefi",
     },
     keyboardType: "numeric",
+    key: "MonthlySavings",
   },
 ];
