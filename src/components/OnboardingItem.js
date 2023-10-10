@@ -21,6 +21,7 @@ export default function OnboardingItem({
           onSubmitEditing={onSubmitEditing}
           text={text}
           onChangeText={onChangeText}
+          key={item.key}
         />
       </View>
     </View>
