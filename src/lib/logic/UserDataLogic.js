@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getData } from "../storage";
 
 const useUserDataLogic = () => {
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState({}); // if state is null, logic will not work
   const [dataLoaded, setDataLoaded] = useState(false);
 
   useEffect(() => {
