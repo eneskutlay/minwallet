@@ -8,25 +8,16 @@ export function useOnboardingLogic(formData) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const flatListRef = useRef(null);
-  const inputRefs = formData.map(() => useRef(null));
   const [text, setText] = useState("");
 
   const handleTextChange = (newText) => {
     setText(newText);
   };
 
-  const focusInput = (index) => {
-    if (inputRefs[index] && inputRefs[index].current) {
-      inputRefs[index].current.focus();
-    }
-  };
-
   const handleNext = async () => {
-    // save data and go to the next screen
     await saveData(formData[currentIndex].key, text);
     if (currentIndex < formData.length - 1) {
       setCurrentIndex(currentIndex + 1);
-      focusInput(currentIndex + 1);
     } else {
       router.push("/home");
     }
