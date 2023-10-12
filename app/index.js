@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   StatusBar,
   SafeAreaView,
@@ -10,19 +10,27 @@ import useUserDataLogic from "../src/lib//logic/UserDataLogic";
 import OnboardingPage from "./onboarding";
 import Home from "./home";
 
-/*
-{!dataLoaded ? ( <ActivityIndicator size="large" color="#C6C6C6" /> ) : dataLoaded ? (<Home />) : (
-  <OnboardingPage />
-)}
-*/
-
 export default function App() {
   const { dataLoaded } = useUserDataLogic();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" backgroundColor="#1C1C1E" />
       <View style={styles.header}>
-        {dataLoaded ? <Home /> : <OnboardingPage />}
+        {loading ? (
+          <ActivityIndicator size="large" color="#C6C6C6" />
+        ) : dataLoaded ? (
+          <Home />
+        ) : (
+          <OnboardingPage />
+        )}
       </View>
     </SafeAreaView>
   );
