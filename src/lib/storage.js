@@ -1,10 +1,10 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const saveData = async (key, data) => {
-  console.log("Key:", key, "Data:", data); // Ekle
+  //console.log("Key:", key, "Data:", data); // Ekle
   try {
     await AsyncStorage.setItem(key, data);
-    console.log(`${key} verisi başarıyla kaydedildi.`, data);
+    //console.log(`${key} verisi başarıyla kaydedildi.`, data);
   } catch (error) {
     console.error(`${key} verisi kaydedilirken bir hata oluştu:`, error);
   }
@@ -14,14 +14,14 @@ export const getData = async (key) => {
   try {
     const value = await AsyncStorage.getItem(key);
     if (value !== null) {
-      console.log(`${key} verisi alındı:`, value);
+      //console.log(`${key} verisi alındı:`, value);
       return value;
     } else {
-      console.log(`${key} verisi bulunamadı.`);
+      //console.log(`${key} verisi bulunamadı.`);
       return null;
     }
   } catch (error) {
-    console.error(`${key} verisi alınırken bir hata oluştu:`, error);
+    //console.error(`${key} verisi alınırken bir hata oluştu:`, error);
     return null;
   }
 };
@@ -29,9 +29,9 @@ export const getData = async (key) => {
 export const removeData = async (key) => {
   try {
     await AsyncStorage.removeItem(key);
-    console.log(`${key} verisi başarıyla silindi.`);
+    //console.log(`${key} verisi başarıyla silindi.`);
   } catch (error) {
-    console.error(`${key} verisi silinirken bir hata oluştu:`, error);
+    //console.error(`${key} verisi silinirken bir hata oluştu:`, error);
   }
 };
 

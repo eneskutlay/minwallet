@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { getData } from "../storage";
 
 const useUserDataLogic = () => {
-  const [userData, setUserData] = useState(null); // Başlangıçta null olarak ayarlandı
-  const [dataLoaded, setDataLoaded] = useState(false); // Veriler yüklendiğinde true olarak ayarlanır
+  const [userData, setUserData] = useState({});
+  const [dataLoaded, setDataLoaded] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,14 +28,14 @@ const useUserDataLogic = () => {
           monthlyExpense,
           monthlySavings,
         });
-        setDataLoaded(true); // Veriler yüklendiğinde bayrağı true yap
+        setDataLoaded(true);
       }
     };
 
     fetchData();
   }, []);
 
-  return { userData, dataLoaded }; // Hem verileri hem de bayrağı döndür
+  return { userData, dataLoaded };
 };
 
 export default useUserDataLogic;

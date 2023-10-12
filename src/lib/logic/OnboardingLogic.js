@@ -21,10 +21,9 @@ export function useOnboardingLogic(formData) {
     }
   };
 
-  const handleNext = () => {
-    // save data and go to next screen
-    saveData(formData[currentIndex].key, text);
-    console.log(formData[currentIndex].key);
+  const handleNext = async () => {
+    // save data and go to the next screen
+    await saveData(formData[currentIndex].key, text);
     if (currentIndex < formData.length - 1) {
       setCurrentIndex(currentIndex + 1);
       focusInput(currentIndex + 1);
@@ -32,6 +31,7 @@ export function useOnboardingLogic(formData) {
       router.push("/home");
     }
   };
+
   useEffect(() => {
     const viewableItemsChanged = ({ viewableItems }) => {
       setCurrentIndex(viewableItems[0].index);
