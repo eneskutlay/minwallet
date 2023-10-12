@@ -5,17 +5,18 @@ import PrimaryButton from "../../src/components/Buttons";
 import { Title } from "../../src/components/Texts";
 import { clearAllData } from "../../src/lib/storage";
 import translations from "../../src/lib/lang/translations.json";
+import useUserDataLogic from "../../src/lib/logic/UserDataLogic";
 
-export default function Home({ userData }) {
+export default function Home() {
+  const { userData } = useUserDataLogic();
   const currentLocale = getLocales()[0].languageCode;
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Title>{translations[currentLocale].homeTitle}</Title>
       </View>
       <View style={styles.body}>
-        <Title>{userData.userName}</Title>
+        <Title>Hello {userData.userName}</Title>
       </View>
       <View style={styles.footer}>
         <PrimaryButton title="Tüm verileri sil" onPress={clearAllData} />
