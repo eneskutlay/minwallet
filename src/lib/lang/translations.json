@@ -1,10 +1,22 @@
 {
   "en": {
     "welcomeMessage": "Welcome to Minwallet",
-    "homeTitle": "Home"
+    "homeTitle": "Home",
+    "home": {
+      "welcome": "Welcome",
+      "monthlyIncome": "Monthly Income",
+      "monthlyExpense": "Monthly Expense",
+      "monthlySaving": "Monthly Saving"
+    }
   },
   "tr": {
     "welcomeMessage": "Minwallet'e hoşgeldiniz",
-    "homeTitle": "Ana Sayfa"
+    "homeTitle": "Ana Sayfa",
+    "home": {
+      "welcome": "Hoşgeldiniz",
+      "monthlyIncome": "Aylık Gelir",
+      "monthlyExpense": "Aylık Gider",
+      "monthlySaving": "Aylık Tasarruf"
+    }
   }
 }
