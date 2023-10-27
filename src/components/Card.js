@@ -18,7 +18,7 @@ export default function Card({ title, description, assetImage }) {
       <View style={styles.router}>
         <Image
           source={require("../../assets/arrow-right.png")}
-          style={styles.imageAssets}
+          style={styles.arrowImage}
         />
       </View>
     </View>
@@ -27,7 +27,7 @@ export default function Card({ title, description, assetImage }) {
 
 const styles = StyleSheet.create({
   container: {
-    width: "92%",
+    width: "94%",
     height: 116,
     justifyContent: "center",
     flexDirection: "row",
@@ -76,5 +76,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "normal",
     color: "#FFFFFF",
+  },
+  arrowImage: {
+    width: 8,
+    height: 14,
+    zIndex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
