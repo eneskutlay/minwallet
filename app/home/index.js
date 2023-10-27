@@ -7,13 +7,15 @@ import { clearAllData } from "../../src/lib/storage";
 import translations from "../../src/lib/lang/translations.json";
 import useUserDataLogic from "../../src/lib/logic/UserDataLogic";
 import Card from "../../src/components/Card";
-import { VictoryPie } from "victory-native";
+import { useRouter } from "expo-router";
 
-
-// create a function for title and description
 export default function Home() {
   const { userData } = useUserDataLogic();
   const currentLocale = getLocales()[0].languageCode;
+  const router = useRouter();
+  const goToRecap = () => {
+    router.push("/recap");
+  };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -21,41 +23,44 @@ export default function Home() {
           {translations[currentLocale].home.welcome} {userData.userName}
         </Title>
       </View>
-      <View style={styles.body}>
-        <Card
-          title={
-            translations[currentLocale].home.monthlyIncome +
-            " " +
-            userData.monthlyIncome
-          }
-          description="Est dolore enim ex culpa laborum pariatur officia labore"
-          assetImage={require("../../assets/bag.png")}
-        />
-        <Card
-          title={
-            translations[currentLocale].home.monthlyExpense +
-            " " +
-            userData.monthlyExpense
-          }
-          description="Est dolore enim ex culpa laborum pariatur officia labore"
-          assetImage={
-            currentLocale === "en"
-              ? require("../../assets/expense.png")
-              : require("../../assets/expense-tr.png")
-          }
-        />
-        <Card
-          title={
-            translations[currentLocale].home.monthlySaving +
-            " " +
-            userData.monthlySavings
-          }
-          description="Est dolore enim ex culpa laborum pariatur officia labore"
-          assetImage={require("../../assets/saving.png")}
-        />
-      </View>
+      <ScrollView style={styles.scrollBody}>
+        <View style={styles.body}>
+          <Card
+            title={
+              translations[currentLocale].home.monthlyIncome +
+              " " +
+              userData.monthlyIncome
+            }
+            description="Est dolore enim ex culpa laborum pariatur officia labore"
+            assetImage={require("../../assets/bag.png")}
+          />
+          <Card
+            title={
+              translations[currentLocale].home.monthlyExpense +
+              " " +
+              userData.monthlyExpense
+            }
+            description="Est dolore enim ex culpa laborum pariatur officia labore"
+            assetImage={
+              currentLocale === "en"
+                ? require("../../assets/expense.png")
+                : require("../../assets/expense-tr.png")
+            }
+          />
+          <Card
+            title={
+              translations[currentLocale].home.monthlySaving +
+              " " +
+              userData.monthlySavings
+            }
+            description="Est dolore enim ex culpa laborum pariatur officia labore"
+            assetImage={require("../../assets/saving.png")}
+          />
+        </View>
+      </ScrollView>
       <View style={styles.footer}>
-        <PrimaryButton title="Tüm verileri sil" onPress={clearAllData} />
+        <PrimaryButton title="Clear All Data" onPress={clearAllData} />
+        <PrimaryButton title="Recap Section" onPress={goToRecap} />
       </View>
     </View>
   );
@@ -74,8 +79,13 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     height: "auto",
-    padding: 16,
+    padding: 4,
     zIndex: 1,
+  },
+  scrollBody: {
+    flex: 12,
+    width: "100%",
+    height: "auto",
   },
   body: {
     flex: 12,
@@ -83,16 +93,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: "auto",
     gap: 24,
+    paddingVertical: 16,
   },
   footer: {
-    flex: 1,
+    flexDirection: "row",
     width: "100%",
     alignItems: "center",
-    height: "auto",
-  },
-  chart: {
-    labels: {
-      fill: "white",
-    },
+    justifyContent: "space-around",
+    //backgroundColor: "green",
   },
 });
