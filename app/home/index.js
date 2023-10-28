@@ -1,7 +1,6 @@
 import React from "react";
-import { StyleSheet, View, ActivityIndicator, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView, Button } from "react-native";
 import { getLocales } from "expo-localization";
-import PrimaryButton from "../../src/components/Buttons";
 import { Title } from "../../src/components/Texts";
 import { clearAllData } from "../../src/lib/storage";
 import translations from "../../src/lib/lang/translations.json";
@@ -59,13 +58,14 @@ export default function Home() {
         </View>
       </ScrollView>
       <View style={styles.footer}>
-        <PrimaryButton title="Clear All Data" onPress={clearAllData} />
-        <PrimaryButton title="Recap Section" onPress={goToRecap} />
+        <Button title="Clear All Data" onPress={clearAllData} />
+        <Button title="Go to Recap" onPress={goToRecap} />
       </View>
     </View>
   );
 }
 
+// some styles problem here but where?
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -96,10 +96,11 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
   },
   footer: {
-    flexDirection: "row",
     width: "100%",
     alignItems: "center",
-    justifyContent: "space-around",
-    //backgroundColor: "green",
+    height: "auto",
+    padding: 4,
+    zIndex: 1,
+    flexDirection: "row",
   },
 });
