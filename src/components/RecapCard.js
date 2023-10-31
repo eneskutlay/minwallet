@@ -1,26 +1,33 @@
 import React from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import { useRouter } from "expo-router";
+import { Dimensions } from "react-native";
+
 export default function RecapCard({ title, description, assetImage, tag }) {
   const router = useRouter();
+
+  const handleCardPress = () => {
+    router.push("/" + tag);
+  };
+  const screenWidth = Dimensions.get("window").width; // Get the screen width
+
+  // Determine the width based on the screen width
+  // if phone is iphone 7 or smaller, card width is 350 px
+  // if phone is iphone 8 or larger, card width is 408 px
+
+  let cardWidth = screenWidth <= 375 ? 350 : 408;
+
   return (
     <TouchableOpacity
-      style={styles.container}
-      tag={tag}
-      onPress={() => {
-        router.push(`/${tag}`);
-      }}
+      style={{ ...styles.container, width: cardWidth }}
+      onPress={handleCardPress}
     >
       <View style={styles.image}>
         <Image style={styles.imageAssets} source={assetImage} />
       </View>
       <View style={styles.body}>
-        <View style={styles.header}>
-          <Text style={styles.title}>{title}</Text>
-        </View>
-        <View style={styles.content}>
-          <Text style={styles.description}>{description}</Text>
-        </View>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.description}>{description}</Text>
       </View>
       <View style={styles.router}>
         <Image
@@ -34,8 +41,8 @@ export default function RecapCard({ title, description, assetImage, tag }) {
 
 const styles = StyleSheet.create({
   container: {
-    width: "98%",
-    height: 116,
+    //width: 408,
+    height: 108,
     justifyContent: "center",
     flexDirection: "row",
     flexWrap: "nowrap",

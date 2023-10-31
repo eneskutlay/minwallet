@@ -3,13 +3,7 @@ import { View, StyleSheet, useWindowDimensions } from "react-native";
 import { OnboardingInput } from "./TextFields";
 import { Title } from "./Texts";
 
-export default function OnboardingItem({
-  item,
-  onSubmitEditing,
-  currentLocale,
-  onChangeText,
-  text,
-}) {
+export default function OnboardingItem({ item, onSubmitEditing, currentLocale, onChangeText, text }) {
   const { width } = useWindowDimensions();
   return (
     <View style={[styles.container, { width }]}>
@@ -19,7 +13,7 @@ export default function OnboardingItem({
           placeholder={item.placeholder[currentLocale]}
           keyboardType={item.keyboardType}
           onSubmitEditing={onSubmitEditing}
-          text={text}
+          value={text}
           onChangeText={onChangeText}
           key={item.key}
         />
