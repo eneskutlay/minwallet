@@ -2,19 +2,14 @@ import React from "react";
 import { StyleSheet, View, ScrollView, Button } from "react-native";
 import { getLocales } from "expo-localization";
 import { Title } from "../../src/components/Texts";
-import { clearAllData } from "../../src/lib/storage";
 import translations from "../../src/lib/lang/translations.json";
 import useUserDataLogic from "../../src/lib/logic/UserDataLogic";
 import Card from "../../src/components/Card";
-import { useRouter } from "expo-router";
+import RecapCard from "../../src/components/RecapCard";
 
 export default function Home() {
   const { userData } = useUserDataLogic();
   const currentLocale = getLocales()[0].languageCode;
-  const router = useRouter();
-  const goToRecap = () => {
-    router.push("/recap");
-  };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -25,6 +20,7 @@ export default function Home() {
       <ScrollView style={styles.scrollBody}>
         <View style={styles.body}>
           <Card
+            tag='income'
             title={
               translations[currentLocale].home.monthlyIncome +
               " " +
@@ -34,6 +30,7 @@ export default function Home() {
             assetImage={require("../../assets/bag.png")}
           />
           <Card
+            tag='expense'
             title={
               translations[currentLocale].home.monthlyExpense +
               " " +
@@ -47,6 +44,7 @@ export default function Home() {
             }
           />
           <Card
+            tag='saving'
             title={
               translations[currentLocale].home.monthlySaving +
               " " +
@@ -55,12 +53,14 @@ export default function Home() {
             description="Est dolore enim ex culpa laborum pariatur officia labore"
             assetImage={require("../../assets/saving.png")}
           />
+          <RecapCard  
+          tag='recap'
+         title='Recap'
+        description="Recap for your overall report and financial freedom analysis"
+        assetImage={require("../../assets/saving.png")}
+          />
         </View>
       </ScrollView>
-      <View style={styles.footer}>
-        <Button title="Clear All Data" onPress={clearAllData} />
-        <Button title="Go to Recap" onPress={goToRecap} />
-      </View>
     </View>
   );
 }
@@ -94,13 +94,5 @@ const styles = StyleSheet.create({
     height: "auto",
     gap: 24,
     paddingVertical: 16,
-  },
-  footer: {
-    width: "100%",
-    alignItems: "center",
-    height: "auto",
-    padding: 4,
-    zIndex: 1,
-    flexDirection: "row",
   },
 });
