@@ -1,8 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import { useRouter } from "expo-router";
-
-export default function Card({ title, description, assetImage, tag }) {
+export default function RecapCard({ title, description, assetImage, tag }) {
   const router = useRouter();
   return (
     <TouchableOpacity
@@ -35,8 +34,8 @@ export default function Card({ title, description, assetImage, tag }) {
 
 const styles = StyleSheet.create({
   container: {
-    width: "96%",
-    height: 108,
+    width: "98%",
+    height: 116,
     justifyContent: "center",
     flexDirection: "row",
     flexWrap: "nowrap",
