@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, FlatList, Animated } from "react-native";
 import OnboardingItem from "../components/OnboardingItem";
-import formData from "../lib/data/formData";
+import formData from "../lib/staticData/formData";
 import { useOnboardingLogic } from "../lib/logic/OnboardingLogic";
 import { getLocales } from "expo-localization";
 
