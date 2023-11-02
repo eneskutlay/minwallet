@@ -7,7 +7,7 @@ export default function Card({ title, description, assetImage, tag }) {
   const router = useRouter();
 
   const handleCardPress = () => {
-    router.push("/" + tag);
+    router.push("details/" + tag);
   };
   const screenWidth = Dimensions.get("window").width; // Get the screen width
 
