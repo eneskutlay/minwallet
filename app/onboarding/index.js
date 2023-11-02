@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, SafeAreaView } from "react-native";
 import { getLocales } from "expo-localization";
 import { Title } from "../../src/components/Texts";
 import PrimaryButton from "../../src/components/Buttons";
@@ -11,7 +11,7 @@ export default function OnboardingPage() {
   const currentLocale = getLocales()[0].languageCode;
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Title>{translations[currentLocale].welcomeMessage}</Title>
       </View>
@@ -24,7 +24,7 @@ export default function OnboardingPage() {
         <PrimaryButton title="Tüm verileri al" onPress={getAllData} />
         <PrimaryButton title="Tüm verileri sil" onPress={clearAllData} />
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

@@ -1,17 +1,18 @@
 import React from "react";
-import { StyleSheet, View, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView, Button, SafeAreaView } from "react-native";
 import { getLocales } from "expo-localization";
 import { Title } from "../../src/components/Texts";
 import translations from "../../src/lib/lang/translations.json";
 import useUserDataLogic from "../../src/lib/logic/UserDataLogic";
 import Card from "../../src/components/Card";
 import RecapCard from "../../src/components/RecapCard";
+import { clearAllData } from "../../src/lib/storage";
 
 export default function Home() {
   const { userData } = useUserDataLogic();
   const currentLocale = getLocales()[0].languageCode;
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Title>
           {translations[currentLocale].home.welcome} {userData.userName}
@@ -61,7 +62,8 @@ export default function Home() {
           />
         </View>
       </ScrollView>
-    </View>
+      <Button title="Clear All Data" onPress={clearAllData} />
+    </SafeAreaView>
   );
 }
 
@@ -73,7 +75,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     height: "100%",
-    marginVertical: 16,
+    backgroundColor: "#1C1C1E",
   },
   header: {
     width: "100%",
