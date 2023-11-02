@@ -22,7 +22,7 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar style="auto" backgroundColor="#1C1C1E" />
+      <StatusBar hidden={true} />
       <View style={styles.header}>
         {loading ? (
           <ActivityIndicator size="large" color="#C6C6C6" />
