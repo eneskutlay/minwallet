@@ -33,3 +33,12 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# ios
+ios/
+
+#eas config
+eas.json
+
+# app config
+app.json
