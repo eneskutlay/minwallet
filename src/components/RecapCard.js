@@ -5,7 +5,6 @@ import { Dimensions } from "react-native";
 
 export default function RecapCard({ title, description, assetImage, tag }) {
   const router = useRouter();
-
   const handleCardPress = () => {
     router.push("/" + tag);
   };
@@ -16,10 +15,16 @@ export default function RecapCard({ title, description, assetImage, tag }) {
   // if phone is iphone 8 or larger, card width is 408 px
 
   let cardWidth = screenWidth <= 375 ? 350 : 408;
-
+  let cardHeight = screenWidth <= 375 ? 98 : 108;
+  let cardPaddingVertical = screenWidth <= 375 ? 16 : 24;
   return (
     <TouchableOpacity
-      style={{ ...styles.container, width: cardWidth }}
+      style={{
+        ...styles.container,
+        width: cardWidth,
+        height: cardHeight,
+        paddingVertical: cardPaddingVertical,
+      }}
       onPress={handleCardPress}
     >
       <View style={styles.image}>
@@ -42,13 +47,13 @@ export default function RecapCard({ title, description, assetImage, tag }) {
 const styles = StyleSheet.create({
   container: {
     //width: 408,
-    height: 108,
+    //height: 108,
     justifyContent: "center",
     flexDirection: "row",
     flexWrap: "nowrap",
     backgroundColor: "#2C2C2E",
     borderRadius: 16,
-    paddingVertical: 24,
+    // paddingVertical: 24,
     paddingHorizontal: 16,
     gap: 8,
   },
