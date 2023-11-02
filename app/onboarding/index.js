@@ -2,14 +2,13 @@ import React from "react";
 import { StyleSheet, View, SafeAreaView } from "react-native";
 import { getLocales } from "expo-localization";
 import { Title } from "../../src/components/Texts";
+import { getAllData, clearAllData } from "../../src/lib/storage";
 import PrimaryButton from "../../src/components/Buttons";
 import Onboarding from "../../src/container/Onboarding";
-import { getAllData, clearAllData } from "../../src/lib/storage";
 import translations from "../../src/lib/lang/translations.json";
 
 export default function OnboardingPage() {
   const currentLocale = getLocales()[0].languageCode;
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>

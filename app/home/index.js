@@ -1,12 +1,18 @@
 import React from "react";
-import { StyleSheet, View, ScrollView, Button, SafeAreaView } from "react-native";
+import {
+  StyleSheet,
+  View,
+  ScrollView,
+  Button,
+  SafeAreaView,
+} from "react-native";
 import { getLocales } from "expo-localization";
 import { Title } from "../../src/components/Texts";
+import { clearAllData } from "../../src/lib/storage";
 import translations from "../../src/lib/lang/translations.json";
 import useUserDataLogic from "../../src/lib/logic/UserDataLogic";
 import Card from "../../src/components/Card";
 import RecapCard from "../../src/components/RecapCard";
-import { clearAllData } from "../../src/lib/storage";
 
 export default function Home() {
   const { userData } = useUserDataLogic();
@@ -45,9 +51,9 @@ export default function Home() {
             }
           />
           <Card
-            tag="saving"
+            tag="savings"
             title={
-              translations[currentLocale].home.monthlySaving +
+              translations[currentLocale].home.monthlySavings +
               " " +
               userData.monthlySavings
             }
@@ -67,7 +73,6 @@ export default function Home() {
   );
 }
 
-// some styles problem here but where?
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -81,16 +86,16 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     height: "auto",
-    padding: 4,
+    paddingTop: 24,
     zIndex: 1,
   },
   scrollBody: {
-    flex: 12,
+    flex: 0,
     width: "100%",
     height: "auto",
   },
   body: {
-    flex: 12,
+    flex: 1,
     width: "100%",
     alignItems: "center",
     height: "auto",
