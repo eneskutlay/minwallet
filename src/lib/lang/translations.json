@@ -6,7 +6,12 @@
       "welcome": "Welcome",
       "monthlyIncome": "Monthly Income",
       "monthlyExpense": "Monthly Expense",
-      "monthlySaving": "Monthly Saving"
+      "monthlySavings": "Monthly Savings"
+    },
+    "details": {
+      "income": "Your monthly income",
+      "expense": "Your monthly expense",
+      "savings": "Your monthly savings"
     }
   },
   "tr": {
@@ -16,7 +21,12 @@
       "welcome": "Hoşgeldiniz",
       "monthlyIncome": "Aylık Gelir",
       "monthlyExpense": "Aylık Gider",
-      "monthlySaving": "Aylık Tasarruf"
+      "monthlySavings": "Aylık Tasarruf"
+    },
+    "details": {
+      "income": "Aylık geliriniz",
+      "expense": "Aylık gideriniz",
+      "savings": "Aylık tasarrufunuz"
     }
   }
 }
