@@ -1,10 +1,18 @@
 import React, { useMemo } from "react";
-import { StyleSheet, Text, TouchableOpacity, SafeAreaView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  SafeAreaView,
+  View,
+  Modal,
+} from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { useRouter } from "expo-router";
 import { getLocales } from "expo-localization";
 import useUserDataLogic from "../../src/lib/logic/UserDataLogic";
 import translations from "../../src/lib/lang/translations.json";
+import ManageDetails from "../../src/components/ManageDetails";
 
 export default function DetailsPage() {
   const router = useRouter();
@@ -34,10 +42,19 @@ export default function DetailsPage() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.head}>{`${translatedText}, ${detailsData}`}</Text>
-      <TouchableOpacity onPress={() => router.push("/home")}>
-        <Text style={styles.button}>Go to Home</Text>
-      </TouchableOpacity>
+      <View style={styles.content}>
+        <View style={styles.head}>
+          <Text style={styles.head}>{translatedText}</Text>
+        </View>
+        <View style={styles.detailContainer}>
+          <ManageDetails />
+        </View>
+      </View>
+      <View style={styles.footer}>
+        <TouchableOpacity onPress={() => router.push("/home")}>
+          <Text style={styles.button}>Go to Home</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }
@@ -49,10 +66,24 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#1C1C1E",
   },
+  content: {
+    flex: 1,
+    alignItems: "center",
+    paddingTop: 28,
+    //justifyContent: "center",
+    padding: 20,
+  },
   head: {
     fontSize: 20,
     fontWeight: "bold",
     color: "#FFF",
+  },
+  detailContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "flex-start",
+    padding: 20,
+    marginVertical: 20,
   },
   button: {
     fontSize: 14,
