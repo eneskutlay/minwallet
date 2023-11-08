@@ -9,9 +9,9 @@
       "monthlySavings": "Monthly Savings"
     },
     "details": {
-      "income": "Your monthly income",
-      "expense": "Your monthly expense",
-      "savings": "Your monthly savings"
+      "income": "Manage your monthly income",
+      "expense": "Manage your monthly expense",
+      "savings": "Manage your monthly savings"
     }
   },
   "tr": {
@@ -24,9 +24,9 @@
       "monthlySavings": "Aylık Tasarruf"
     },
     "details": {
-      "income": "Aylık geliriniz",
-      "expense": "Aylık gideriniz",
-      "savings": "Aylık tasarrufunuz"
+      "income": "Aylık gelirinizi yönetin",
+      "expense": "Aylık giderinizi yönetin",
+      "savings": "Aylık tasarrufunuzu yönetin"
     }
   }
 }
