@@ -17,8 +17,7 @@ export const getData = async (key) => {
       //console.log(`${key} verisi alındı:`, value);
       return value;
     } else {
-      //console.log(`${key} verisi bulunamadı.`);
-      return null;
+      return ""; // Veri yoksa boş döndür
     }
   } catch (error) {
     //console.error(`${key} verisi alınırken bir hata oluştu:`, error);
