@@ -2,8 +2,6 @@ import React from "react";
 import { StyleSheet, View, SafeAreaView } from "react-native";
 import { getLocales } from "expo-localization";
 import { Title } from "../../src/components/Texts";
-import { getAllData, clearAllData } from "../../src/lib/storage";
-import PrimaryButton from "../../src/components/Buttons";
 import Onboarding from "../../src/container/Onboarding";
 import translations from "../../src/lib/lang/translations.json";
 
@@ -18,10 +16,6 @@ export default function OnboardingPage() {
         <View style={styles.userData}>
           <Onboarding />
         </View>
-      </View>
-      <View style={styles.footer}>
-        <PrimaryButton title="Tüm verileri al" onPress={getAllData} />
-        <PrimaryButton title="Tüm verileri sil" onPress={clearAllData} />
       </View>
     </SafeAreaView>
   );
