@@ -13,7 +13,13 @@ export default function Card({ title, description, assetImage, tag }) {
   const router = useRouter();
 
   const handleCardPress = () => {
-    router.push("details/" + tag);
+    // if tag is recap go to recap screen
+    // else go to router.push("details/" + tag);
+    if (tag === "recap") {
+      router.push("recap");
+    } else {
+      router.push("details/" + tag);
+    }
   };
   const screenWidth = Dimensions.get("window").width; // Get the screen width
 
