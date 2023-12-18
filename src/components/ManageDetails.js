@@ -85,6 +85,7 @@ const ManageDetails = () => {
                 value={value}
                 onChangeText={(text) => setValue(text)}
                 placeholder="Enter value"
+                keyboardType="numeric"
               />
               <TouchableOpacity onPress={handleSave}>
                 <Text style={styles.saveButton}>Save</Text>

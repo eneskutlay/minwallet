@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { getLocales } from "expo-localization";
 import { Title } from "../../src/components/Texts";
-import { clearAllData } from "../../src/lib/storage";
+import { clearAllData, getAllData } from "../../src/lib/storage";
 import translations from "../../src/lib/lang/translations.json";
 import useUserDataLogic from "../../src/lib/logic/UserDataLogic";
 import Card from "../../src/components/Card";
@@ -69,6 +69,7 @@ export default function Home() {
         </View>
       </ScrollView>
       <Button title="Clear All Data" onPress={clearAllData} />
+      <Button title="Get All Data" onPress={getAllData} />
     </SafeAreaView>
   );
 }
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     height: "auto",
-    paddingTop: 24,
+    paddingTop: 28,
     zIndex: 1,
   },
   scrollBody: {

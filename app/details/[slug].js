@@ -1,29 +1,22 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import {
   StyleSheet,
   Text,
   TouchableOpacity,
   SafeAreaView,
   View,
-  Modal,
 } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { useRouter } from "expo-router";
 import { getLocales } from "expo-localization";
-import useUserDataLogic from "../../src/lib/logic/UserDataLogic";
 import translations from "../../src/lib/lang/translations.json";
 import ManageDetails from "../../src/components/ManageDetails";
+import UserDetailsBySlug from "../../src/components/UserDetailsBySlug";
 
 export default function DetailsPage() {
   const router = useRouter();
   const { slug } = useLocalSearchParams();
-  const { userData } = useUserDataLogic();
-
   const currentLocale = getLocales()[0].languageCode;
-
-  const detailsData = useMemo(() => {
-    return userData[`monthly${slug.charAt(0).toUpperCase() + slug.slice(1)}`];
-  }, [slug, userData]);
 
   const translationKey = useMemo(() => {
     if (slug === "income") {
@@ -45,6 +38,9 @@ export default function DetailsPage() {
       <View style={styles.content}>
         <View style={styles.head}>
           <Text style={styles.head}>{translatedText}</Text>
+        </View>
+        <View style={styles.detailList}>
+          <UserDetailsBySlug slug={slug} />
         </View>
         <View style={styles.detailContainer}>
           <ManageDetails />
@@ -78,12 +74,16 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#FFF",
   },
+  detailList: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 20,
+    marginVertical: 20,
+  },
   detailContainer: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "flex-start",
-    padding: 20,
-    marginVertical: 20,
   },
   button: {
     fontSize: 14,

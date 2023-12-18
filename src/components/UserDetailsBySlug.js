@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import useUserDetailsLogic from "../lib/logic/UserDetailsLogic";
 
 const UserDetailsBySlug = ({ slug }) => {
@@ -20,25 +20,33 @@ const UserDetailsBySlug = ({ slug }) => {
     }
     return {};
   };
-  console.log(dataLoaded);
 
   return (
-    <View>
+    <View style={styles.container}>
       {dataLoaded ? (
-        <View>
-          {Object.keys(detailsData()).map((key) => (
-            <View key={key}>
-              <Text>
-                {key}: {detailsData()[key]}
-              </Text>
-            </View>
-          ))}
-        </View>
+        Object.keys(detailsData()).map((key, index) => (
+          <Text key={index} style={styles.detailsListText}>
+            {key}: {detailsData()[key]}
+          </Text>
+        ))
       ) : (
-        <Text>Data is loading...</Text>
+        <Text style={styles.detailsListText}>Loading...</Text>
       )}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginVertical: 10,
+  },
+  detailsListText: {
+    fontSize: 14,
+    fontWeight: "normal",
+    color: "#FFF",
+    marginVertical: 5,
+  },
+});
 
 export default UserDetailsBySlug;
