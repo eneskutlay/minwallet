@@ -43,3 +43,7 @@ eas.json
 # app config
 app.json
 app.json
+
+## archive folder
+archive/
+
