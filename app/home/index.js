@@ -1,7 +1,6 @@
 import React from "react";
-import { StyleSheet, View, Button, SafeAreaView, FlatList } from "react-native";
+import { StyleSheet, View, SafeAreaView, FlatList } from "react-native";
 import { getLocales } from "expo-localization";
-import { clearAllData, getAllData } from "../../src/lib/storage";
 import translations from "../../src/lib/lang/translations.json";
 import useUserDataLogic from "../../src/lib/logic/UserDataLogic";
 import Card from "../../src/components/Card";
@@ -67,10 +66,6 @@ export default function Home() {
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={() => <View style={{ height: 24 }} />}
       />
-      <View style={styles.buttonsContainer}>
-        <Button title="Clear All Data" onPress={clearAllData} />
-        <Button title="Get All Data" onPress={getAllData} />
-      </View>
     </SafeAreaView>
   );
 }
@@ -83,10 +78,5 @@ const styles = StyleSheet.create({
   body: {
     alignItems: "center",
     paddingVertical: 16,
-  },
-  buttonsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    marginBottom: 20,
   },
 });
