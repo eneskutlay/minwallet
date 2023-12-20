@@ -1,11 +1,11 @@
 import React from "react";
 import { StyleSheet, View, Button, SafeAreaView, FlatList } from "react-native";
 import { getLocales } from "expo-localization";
-import { Title } from "../../src/components/Texts";
 import { clearAllData, getAllData } from "../../src/lib/storage";
 import translations from "../../src/lib/lang/translations.json";
 import useUserDataLogic from "../../src/lib/logic/UserDataLogic";
 import Card from "../../src/components/Card";
+import Header from "../../src/components/Header";
 
 export default function Home() {
   const { userData } = useUserDataLogic();
@@ -55,11 +55,10 @@ export default function Home() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Title>
-          {currentTranslations.home.welcome} {userData.userName}
-        </Title>
-      </View>
+      <Header
+        title={currentTranslations.home.welcome}
+        userName={userData.userName}
+      />
       <FlatList
         data={data}
         renderItem={renderItem}
@@ -80,10 +79,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#1C1C1E",
-  },
-  header: {
-    alignItems: "center",
-    paddingTop: 28,
   },
   body: {
     alignItems: "center",
