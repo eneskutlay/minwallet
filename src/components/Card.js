@@ -11,17 +11,9 @@ import { useRouter } from "expo-router";
 
 export default function Card({ title, description, assetImage, tag }) {
   const router = useRouter();
-
-  const handleCardPress = () => {
-    // if tag is recap go to recap screen
-    // else go to router.push("details/" + tag);
-    if (tag === "recap") {
-      router.push("recap");
-    } else {
-      router.push("details/" + tag);
-    }
-  };
-  const screenWidth = Dimensions.get("window").width; // Get the screen width
+  const screenWidth = Dimensions.get("window").width;
+  const handleCardPress = () =>
+    router.push(tag === "recap" ? "recap" : "details/" + tag);
 
   // Determine the width based on the screen width
   // if phone is iphone 7 or smaller, card width is 350 px
