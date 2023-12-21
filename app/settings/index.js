@@ -1,18 +1,47 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Text, Button, TextInput, Alert } from "react-native";
-import { clearAllData, getAllData } from "../../src/lib/storage";
+import {
+  clearAllData,
+  getAllData,
+  updateBasicUserData,
+} from "../../src/lib/storage";
 import { useRouter } from "expo-router";
 import useUserDataLogic from "../../src/lib/logic/UserDataLogic";
 import { Hint } from "../../src/components/Texts";
 
 const UserDataSettings = ({ onEdit }) => {
-  const { userData, updateUser } = useUserDataLogic();
+  const { userData } = useUserDataLogic();
   const { userName, monthlyIncome, monthlyExpense, monthlySavings } = userData;
   const [editing, setEditing] = useState(false);
   const [editedData, setEditedData] = useState({ ...userData });
 
+  const handleCancel = () => {
+    setEditedData({ ...userData });
+    setEditing(false);
+  };
+
   const handleSave = async () => {
-    //error handlesave not working
+    await updateBasicUserData(editedData);
+    setEditing(false);
+    onEdit();
+  };
+
+  const handleEditStart = () => {
+    Alert.alert(
+      "Uyarı",
+      "Verileri düzenlemek üzeresiniz. Devam etmek istiyor musunuz?",
+      [
+        {
+          text: "İptal",
+          onPress: () => console.log("Düzenleme iptal edildi"),
+          style: "cancel",
+        },
+        {
+          text: "Devam Et",
+          onPress: () => setEditing(true),
+        },
+      ]
+    );
   };
 
   return (
@@ -40,7 +69,7 @@ const UserDataSettings = ({ onEdit }) => {
               ? editedData.monthlySavings
               : monthlySavings}
           </Hint>
-          <Button title="Edit" onPress={() => setEditing(true)} />
+          <Button title="Edit" onPress={handleEditStart} />
         </View>
       ) : (
         <View>
@@ -50,7 +79,7 @@ const UserDataSettings = ({ onEdit }) => {
             onChangeText={(text) =>
               setEditedData({ ...editedData, userName: text })
             }
-            placeholder="Enter username"
+            placeholder="Enter userName"
           />
           <TextInput
             style={styles.input}
@@ -80,6 +109,7 @@ const UserDataSettings = ({ onEdit }) => {
             keyboardType="numeric"
           />
           <Button title="Save" onPress={handleSave} />
+          <Button title="Cancel" onPress={handleCancel} />
         </View>
       )}
     </View>

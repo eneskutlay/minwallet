@@ -25,6 +25,22 @@ export const getData = async (key) => {
   }
 };
 
+// update basic user data
+export const updateBasicUserData = async (data) => {
+  try {
+    await AsyncStorage.multiSet([
+      ["Username", data.userName],
+      ["MonthlyIncome", data.monthlyIncome],
+      ["MonthlyExpense", data.monthlyExpense],
+      ["MonthlySavings", data.monthlySavings],
+    ]);
+    console.log('Veriler başarıyla güncellendi:', data);
+  } catch (error) {
+    console.error('Veri güncellenirken bir hata oluştu:', error);
+  }
+};
+
+
 export const removeData = async (key) => {
   try {
     await AsyncStorage.removeItem(key);
