@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, View, SafeAreaView, FlatList } from "react-native";
 import { getLocales } from "expo-localization";
 import translations from "../../src/lib/lang/translations.json";
@@ -7,10 +7,15 @@ import Card from "../../src/components/Card";
 import Header from "../../src/components/Header";
 
 export default function Home() {
-  const { userData } = useUserDataLogic();
+  const { userData, dataLoaded } = useUserDataLogic();
   const currentLocale = getLocales()[0].languageCode;
   const currentTranslations = translations[currentLocale];
   const { monthlyIncome, monthlyExpense, monthlySavings } = userData;
+
+  //refresh userData from storage when it changes or render again
+  useEffect(() => {
+    dataLoaded;
+  }, []);
 
   const data = [
     {
@@ -39,7 +44,7 @@ export default function Home() {
       title: "Recap",
       description:
         "Recap for your overall report and financial freedom analysis",
-      assetImage: require("../../assets/saving.png"),
+      assetImage: require("../../assets/saving.png"), //change this image
     },
   ];
 
