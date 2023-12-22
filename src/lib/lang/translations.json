@@ -4,6 +4,7 @@
     "homeTitle": "Home",
     "home": {
       "welcome": "Welcome",
+      "username": "Username",
       "monthlyIncome": "Monthly Income",
       "monthlyExpense": "Monthly Expense",
       "monthlySavings": "Monthly Savings"
@@ -12,6 +13,23 @@
       "income": "Manage your monthly income",
       "expense": "Manage your monthly expense",
       "savings": "Manage your monthly savings"
+    },
+    "settings": {
+      "title": "Settings",
+      "alert": "Alert",
+      "handleEditStart": "You are about to edit the data. Do you want to continue?",
+      "handleDeleteStart": "You are about to delete the data. Do you want to continue?",
+      "cancel": "Cancel",
+      "ok": "Ok"
+    },
+    "placeholders": {
+      "username": "Enter your username",
+      "monthlyExpense": "Enter your monthly expense",
+      "monthlyIncome": "Enter your monthly income",
+      "monthlySavings": "Enter your monthly savings",
+      "edit": "Edit",
+      "save": "Save",
+      "deleteAllData": "Delete All Data"
     }
   },
   "tr": {
@@ -19,6 +37,7 @@
     "homeTitle": "Ana Sayfa",
     "home": {
       "welcome": "Hoşgeldiniz",
+      "username": "Kullanıcı Adı",
       "monthlyIncome": "Aylık Gelir",
       "monthlyExpense": "Aylık Gider",
       "monthlySavings": "Aylık Tasarruf"
@@ -27,6 +46,23 @@
       "income": "Aylık gelirinizi yönetin",
       "expense": "Aylık giderinizi yönetin",
       "savings": "Aylık tasarrufunuzu yönetin"
+    },
+    "settings": {
+      "title": "Ayarlar",
+      "alert": "Uyarı",
+      "handleEditStart": "Verileri düzenlemek üzeresiniz. Devam etmek istiyor musunuz?",
+      "handleDeleteStart": "Verileri silmek üzeresiniz. Devam etmek istiyor musunuz?",
+      "cancel": "İptal",
+      "ok": "Tamam"
+    },
+    "placeholders": {
+      "username": "Kullanıcı adınızı giriniz",
+      "monthlyExpense": "Aylık giderinizi giriniz",
+      "monthlyIncome": "Aylık gelirinizi giriniz",
+      "monthlySavings": "Aylık tasarrufunuzu giriniz",
+      "edit": "Düzenle",
+      "save": "Kaydet",
+      "deleteAllData": "Tüm Verileri Sil"
     }
   }
 }
