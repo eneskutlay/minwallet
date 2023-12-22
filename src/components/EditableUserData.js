@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Button, TextInput, Alert } from "react-native";
-import { clearAllData, updateBasicUserData } from "../lib/storage";
 import { useRouter } from "expo-router";
+import { getLocales } from "expo-localization";
+import { clearAllData, updateBasicUserData } from "../lib/storage";
 import useUserDataLogic from "../lib/logic/UserDataLogic";
+import translations from "../lib/lang/translations.json";
 import { Hint } from "./Texts";
 
 const UserDataSettings = ({ onEdit }) => {
@@ -11,6 +13,8 @@ const UserDataSettings = ({ onEdit }) => {
   const [editing, setEditing] = useState(false);
   const [editedData, setEditedData] = useState({ ...userData });
   const router = useRouter();
+  const currentLocale = getLocales()[0].languageCode;
+  const currentTranslations = translations[currentLocale];
 
   const handleCancel = () => {
     setEditedData({ ...userData });
@@ -25,16 +29,16 @@ const UserDataSettings = ({ onEdit }) => {
 
   const handleEditStart = () => {
     Alert.alert(
-      "Uyarı",
-      "Verileri düzenlemek üzeresiniz. Devam etmek istiyor musunuz?",
+      `${currentTranslations.settings.alert}`,
+      `${currentTranslations.settings.handleEditStart}`,
       [
         {
-          text: "İptal",
+          text: `${currentTranslations.settings.cancel}`,
           onPress: () => console.log("Düzenleme iptal edildi"),
           style: "cancel",
         },
         {
-          text: "Devam Et",
+          text: `${currentTranslations.settings.ok}`,
           onPress: () => setEditing(true),
         },
       ]
@@ -47,16 +51,16 @@ const UserDataSettings = ({ onEdit }) => {
       router.push("onboarding");
     };
     Alert.alert(
-      "Uyarı",
-      "Tüm verileri silmek üzeresiniz. Devam etmek istiyor musunuz?",
+      `${currentTranslations.settings.alert}`,
+      `${currentTranslations.settings.handleDeleteStart}`,
       [
         {
-          text: "İptal",
+          text: `${currentTranslations.settings.cancel}`,
           onPress: () => handleCancel(),
           style: "cancel",
         },
         {
-          text: "Devam Et",
+          text: `${currentTranslations.settings.ok}`,
           onPress: () => handleDeleteAllDataOnPress(),
         },
       ]
@@ -68,28 +72,32 @@ const UserDataSettings = ({ onEdit }) => {
       {!editing ? (
         <View>
           <Hint>
-            Username: {editedData.userName ? editedData.userName : userName}
+            {currentTranslations.home.username}:{" "}
+            {editedData.userName ? editedData.userName : userName}
           </Hint>
           <Hint>
-            Monthly Income:{" "}
+            {currentTranslations.home.monthlyIncome}:{" "}
             {editedData.monthlyIncome
               ? editedData.monthlyIncome
               : monthlyIncome}
           </Hint>
           <Hint>
-            Monthly Expense:{" "}
+            {currentTranslations.home.monthlyExpense}:{" "}
             {editedData.monthlyExpense
               ? editedData.monthlyExpense
               : monthlyExpense}
           </Hint>
           <Hint>
-            Monthly Savings:{" "}
+            {currentTranslations.home.monthlySavings}:{" "}
             {editedData.monthlySavings
               ? editedData.monthlySavings
               : monthlySavings}
           </Hint>
           <View style={styles.editButtons}>
-            <Button title="Edit" onPress={handleEditStart} />
+            <Button
+              title={currentTranslations.placeholders.edit}
+              onPress={handleEditStart}
+            />
           </View>
         </View>
       ) : (
@@ -100,7 +108,7 @@ const UserDataSettings = ({ onEdit }) => {
             onChangeText={(text) =>
               setEditedData({ ...editedData, userName: text })
             }
-            placeholder="Enter userName"
+            placeholder={currentTranslations.placeholders.username}
           />
           <TextInput
             style={styles.input}
@@ -108,7 +116,7 @@ const UserDataSettings = ({ onEdit }) => {
             onChangeText={(text) =>
               setEditedData({ ...editedData, monthlyIncome: text })
             }
-            placeholder="Enter monthly income"
+            placeholder={currentTranslations.placeholders.monthlyIncome}
             keyboardType="numeric"
           />
           <TextInput
@@ -117,7 +125,7 @@ const UserDataSettings = ({ onEdit }) => {
             onChangeText={(text) =>
               setEditedData({ ...editedData, monthlyExpense: text })
             }
-            placeholder="Enter monthly expense"
+            placeholder={currentTranslations.placeholders.monthlyExpense}
             keyboardType="numeric"
           />
           <TextInput
@@ -126,14 +134,17 @@ const UserDataSettings = ({ onEdit }) => {
             onChangeText={(text) =>
               setEditedData({ ...editedData, monthlySavings: text })
             }
-            placeholder="Enter monthly savings"
+            placeholder={currentTranslations.placeholders.monthlySavings}
             keyboardType="numeric"
           />
           <View style={styles.editButtons}>
-            <Button title="Cancel" onPress={handleCancel} />
+            <Button
+              title={currentTranslations.settings.cancel}
+              onPress={handleCancel}
+            />
             <Button
               color="#E75D42"
-              title="Delete All Data"
+              title={currentTranslations.placeholders.deleteAllData}
               onPress={handleDeleteAllData}
             />
             <Button title="Save" onPress={handleSave} />

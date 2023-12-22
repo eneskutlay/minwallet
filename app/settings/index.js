@@ -1,12 +1,16 @@
 import React from "react";
 import { StyleSheet, View, Button, SafeAreaView } from "react-native";
-import { getAllData } from "../../src/lib/storage";
 import { useRouter } from "expo-router";
+import { getLocales } from "expo-localization";
+import translations from "../../src/lib/lang/translations.json";
+import { getAllData } from "../../src/lib/storage";
 import { Title } from "../../src/components/Texts";
 import EditableUserData from "../../src/components/EditableUserData";
 
 export default function Settings() {
   const router = useRouter();
+  const currentLocale = getLocales()[0].languageCode;
+  const currentTranslations = translations[currentLocale];
 
   const handleEdit = () => {
     // Handle any actions after data editing
@@ -16,7 +20,7 @@ export default function Settings() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.userDataContainer}>
-        <Title>Settings</Title>
+        <Title>{currentTranslations.settings.title}</Title>
         <EditableUserData onEdit={handleEdit} />
       </View>
       <View style={styles.buttonsContainer}>
