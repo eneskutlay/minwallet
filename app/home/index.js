@@ -12,11 +12,7 @@ export default function Home() {
   const currentTranslations = translations[currentLocale];
   const { monthlyIncome, monthlyExpense, monthlySavings } = userData;
 
-  //refresh userData from storage when it changes or render again
-  useEffect(() => {
-    dataLoaded;
-  }, []);
-
+  //If the page is rendered, all data is re-retrieved.
   const data = [
     {
       tag: "income",
