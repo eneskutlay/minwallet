@@ -1,29 +1,37 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, View, SafeAreaView, FlatList } from "react-native";
 import { getLocales } from "expo-localization";
+import { useFocusEffect } from "expo-router";
 import translations from "../../src/lib/lang/translations.json";
 import useUserDataLogic from "../../src/lib/logic/UserDataLogic";
 import Card from "../../src/components/Card";
 import Header from "../../src/components/Header";
 
 export default function Home() {
-  const { userData, dataLoaded } = useUserDataLogic();
+  const { userData } = useUserDataLogic();
   const currentLocale = getLocales()[0].languageCode;
   const currentTranslations = translations[currentLocale];
   const { monthlyIncome, monthlyExpense, monthlySavings } = userData;
+  const [refreshKey, setRefreshKey] = useState(0);
 
   //If the page is rendered, all data is re-retrieved.
+  useFocusEffect(
+    React.useCallback(() => {
+      setRefreshKey((prevKey) => prevKey + 1); // Sayfa odaklandığında refreshKey'i arttır
+    }, [])
+  );
+
   const data = [
     {
       tag: "income",
       title: `${currentTranslations.home.monthlyIncome} ${monthlyIncome}`,
-      description: "Est dolore enim ex culpa laborum pariatur officia labore",
+      description: `${currentTranslations.details.income.description}`,
       assetImage: require("../../assets/bag.png"),
     },
     {
       tag: "expense",
       title: `${currentTranslations.home.monthlyExpense} ${monthlyExpense}`,
-      description: "Est dolore enim ex culpa laborum pariatur officia labore",
+      description: `${currentTranslations.details.expense.description}`,
       assetImage:
         currentLocale === "en"
           ? require("../../assets/expense.png")
@@ -32,14 +40,13 @@ export default function Home() {
     {
       tag: "savings",
       title: `${currentTranslations.home.monthlySavings} ${monthlySavings}`,
-      description: "Est dolore enim ex culpa laborum pariatur officia labore",
+      description: `${currentTranslations.details.savings.description}`,
       assetImage: require("../../assets/saving.png"),
     },
     {
       tag: "recap",
       title: "Recap",
-      description:
-        "Recap for your overall report and financial freedom analysis",
+      description: `${currentTranslations.details.recap.description}`,
       assetImage: require("../../assets/saving.png"), //change this image
     },
   ];
@@ -60,6 +67,7 @@ export default function Home() {
         userName={userData.userName}
       />
       <FlatList
+        key={refreshKey}
         data={data}
         renderItem={renderItem}
         keyExtractor={(item) => item.tag}
