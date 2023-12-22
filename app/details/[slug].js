@@ -20,7 +20,7 @@ export default function DetailsPage() {
     <SafeAreaView style={styles.container}>
       <View style={styles.head}>
         <Text style={styles.heading}>
-          {translations[currentLocale]["details"][slug]}
+          {translations[currentLocale].details[slug].title}
         </Text>
       </View>
       <View style={styles.footer}>

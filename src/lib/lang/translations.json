@@ -10,9 +10,22 @@
       "monthlySavings": "Monthly Savings"
     },
     "details": {
-      "income": "Manage your monthly income",
-      "expense": "Manage your monthly expense",
-      "savings": "Manage your monthly savings"
+      "income": {
+        "title": "Manage your monthly income",
+        "description": "Track your monthly income and manage your earnings."
+      },
+      "expense": {
+        "title": "Manage your monthly expense",
+        "description": "Monitor your monthly expenses to control your spending."
+      },
+      "savings": {
+        "title": "Manage your monthly savings",
+        "description": "Manage your monthly savings and plan for the future."
+      },
+      "recap": {
+        "title": "Recap",
+        "description": "Get an overview of your overall financial report and analysis."
+      }
     },
     "settings": {
       "title": "Settings",
@@ -43,9 +56,22 @@
       "monthlySavings": "Aylık Tasarruf"
     },
     "details": {
-      "income": "Aylık gelirinizi yönetin",
-      "expense": "Aylık giderinizi yönetin",
-      "savings": "Aylık tasarrufunuzu yönetin"
+      "income": {
+        "title": "Aylık gelirinizi yönetin",
+        "description": "Aylık gelirinizi takip edin ve kazançlarınızı yönetin."
+      },
+      "expense": {
+        "title": "Aylık giderinizi yönetin",
+        "description": "Aylık harcamalarınızı takip ederek harcamalarınızı kontrol altında tutun."
+      },
+      "savings": {
+        "title": "Aylık tasarrufunuzu yönetin",
+        "description": "Aylık tasarruflarınızı yönetin ve gelecek için plan yapın."
+      },
+      "recap": {
+        "title": "Özet",
+        "description": "Genel finansal raporunuzun ve analizinizi elde edin."
+      }
     },
     "settings": {
       "title": "Ayarlar",
