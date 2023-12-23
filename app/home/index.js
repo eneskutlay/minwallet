@@ -14,10 +14,9 @@ export default function Home() {
   const { monthlyIncome, monthlyExpense, monthlySavings } = userData;
   const [refreshKey, setRefreshKey] = useState(0);
 
-  //If the page is rendered, all data is re-retrieved.
   useFocusEffect(
     React.useCallback(() => {
-      setRefreshKey((prevKey) => prevKey + 1); // Sayfa odaklandığında refreshKey'i arttır
+      setRefreshKey((prevKey) => prevKey + 1);
     }, [])
   );
 
