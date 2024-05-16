@@ -6,7 +6,7 @@ This project is called "minwallet" and it aims to provide a minimalistic wallet 
 
 ## Description
 
-"Minwallet" projesi, kullanıcıların mali durumlarını minimalist ve kullanıcı dostu bir şekilde yönetmelerine olanak tanıyan basit bir cüzdan uygulamasıdır. Hesap oluşturma, işlem ekleme ve rapor oluşturma gibi temel özellikleri sağlar.
+The "minwallet" project is a simple wallet application that allows users to manage their finances in a minimalistic and user-friendly way. It provides basic features such as creating accounts, adding transactions, and generating reports.
 
 ## Features
 
